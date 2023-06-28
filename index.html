@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            background-color: cornflowerblue;
+        }
+        pre{
+            background-color: bisque;
+        }
+        p{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>What is execution context</h1>
+        <P>the java script Engines creates the Special environment which handles the transformation <br>
+            and execution of js code this environment is called execution context <br>
+        ----->there are two kinds of execution context :-<br>
+        1)global execution context<br>
+        2)Functional execution context
+     ----> GEC:- when ever a js engines encounter a js file it creates default execcution contrext<br>
+      called global execution context which executes all the code except the code inside the function
+    ----> FEC :- whenever a function is called js engine creates different FEC in GEC to executes code inside the functions  </P>
+        
+    </div>
+    <div>
+        <h1>what is creation phase and execution phase?</h1>
+        <p>
+           creation phase:- in this phase js engine create execution context and set up the script enbvironment 
+                             variable are stored in the key value pair <br>
+                             it determines the values of the variable and functions and setups the scope chain for context execution<br>
+                             initially it stores all the variable  as undefined and function as defined <br>
+           execution phase :- in this phase the js code start executing the code line by line it assign the <br>
+            value to all the variable which is defined as undefined and the skips the funstion until its called 
+           then when the function is called it creats FEC where the code inside the function is executed 
+           after execution of the first funtion the function is removed from call stack and the second function 
+           executed after all the functions are executed  the fec is removed from call stack and at the end GEC is also removed from call stack after execution 
+
+                  
+        </p>
+        
+        
+    </div>
+    <div><h1>what is an event loop and call stack</h1>
+    <p>event loop :- Event loop: An event loop is something that pulls stuff out of <br>
+        the queue and places it onto the function execution stack whenever the function stack becomes empty
+    call stack :- call stack is a queue of task which manages the order of execution context </p></div> 
+    <div><h1>what is temporaldead zone(TDZ)</h1>
+    <P>A let or const variable is said to be in a "temporal dead zone" (TDZ) from the start of the block until code<br>
+         execution reaches the line where the variable is declared and initialized. While inside the TDZ, the <br>variable has
+         not been initialized with a value, and any attempt to access it will result in a ReferenceError </P>
+        <pre>
+              if(true){
+                console.log(a); //a is in temporal dead zone
+
+                let a=12;
+              }
+        </pre> </div>
+    <div> <h1>what is the spread operator</h1>
+    <P> spread operator in js expands values in arrays and strings into individual element<br>
+        rest operator puts the values which is user defined data into javascript array
+    or spread operator ALLOW US to quickly copy all the parts of an existing array<br>
+     and strings into another array or object</p>
+        <pre>
+            let a=[1,2,3,4]
+            let b=[5,,7,8];
+            let c=[...a, ...b]                                                                                                                  
+            
+        </pre></div>
+        <div><h1>what is the use of setTimeout</h1>
+        <p>setTimeout()method is used to set the timer which executes functions or specified piece of code once the timer expires  </p>
+    <pre>
+        setTimeout(()=>{
+            console.log("message delyaed for 1 sec")
+        },1000);
+    </pre></div>
+
+    <div>
+        <h1>what are callbacks?</h1>
+        <p>callback is a function which is passed as an argument to another function and its executed in that function  </p>
+    <pre>
+       
+function displayer(sum){
+    console.log(sum);
+}
+function callbackFunc(n1,n2,callback){
+    results=n1+n2;
+    callback(results)
+}
+callbackFunc(2,3,displayer);
+    </pre>
+</div>
+<div>
+    <h1>
+        what is call back hell?
+    </h1>
+    <p>callback hell is a phenomenon which occurs when we nest multiple callbacks with in a function</p>
+    <pre>function firstfucn(alpha,time,callback){
+        setTimeout(()=>{
+            console.log(alpha);
+            callback()
+        },time)
+    }
+    function firstcallback(){
+        firstfucn("a",1000,()=>{
+            firstfucn("e",4000,()=>{
+                firstfucn("i",3000,()=>{
+    
+                })
+            })
+        })
+    }
+    firstcallback()</pre>
+</div>
+<div>
+    <h1>what is the difference between undefined ,notdefined and NaN</h1>
+    <p>undefined: it is the value assigned to a variable when the varuable is initilized with the value<br>
+    not defined:- indicated that variable does not exist<br>
+     NAN:- NOt a number when ever a number is expected and found strinfn isted of that then it returns NAN</p>
+     <pre>undefined:-
+        console.log(a);
+        var a;
+        not defined:-
+        console.log(b);
+        NaN:-
+        a="helo";
+        b=4
+        console.log(a/b);
+     </pre>
+</div>
+</body>
+</html>
